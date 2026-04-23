@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SummerTravel{% endblock %}</title>
+
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/Summer Travel logo,palm tree and plane logo.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+          integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo"><a href="{{ url_for('index') }}">SummerTravel</a></div>
+            <ul class="links">
+                <li><a href="#">Africa</a></li>
+                <li><a href="#">Americas</a></li>
+                <li><a href="#">Asia</a></li>
+                <li><a href="#">Europe</a></li>
+            </ul>
+            <a href="{{ url_for('login') }}" class="action_btn">Login</a>
+            <div class="toggle_btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+
+        <div class="dropdown_menu">
+            <li><a href="#">Africa</a></li>
+            <li><a href="#">Americas</a></li>
+            <li><a href="#">Asia</a></li>
+            <li><a href="#">Europe</a></li>
+            <li><a href="{{ url_for('login') }}" class="action_btn">Login</a></li>
+        </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="apaksa">
+        <div class="virsraksts">
+            <h1>SummerTravel</h1>
+            <p>Your affordable online tour operator.</p>
+            <p class="extra_text">Our expert Travel Crafters design extraordinary vacation packages at never-before-seen prices to give you a truly unforgettable experience.</p>
+        </div>
+        <div class="visi_cont">
+            <div class="contacts">
+                <h2>Contacts</h2>
+                <p>Contact nr: +371 26618583</p>
+                <p>E-mail: matiss.priede07@gmail.com</p>
+            </div>
+            <div class="follow">
+                <h2>Follow</h2>
+                <div class="icons_div">
+                    <a href="https://www.facebook.com/?locale=lv_LV">
+                        <svg class="follow_icons" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 994 1024">
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="60.502"
+                                  d="M302.508 150.941h363.174c100.15 0 181.344 81.194 181.344 181.344V695.66c0 100.111-81.194 181.305-181.344 181.305H302.346c-100.151 0-181.345-81.194-181.345-181.344V332.447c0-100.232 81.275-181.506 181.508-181.506zM447.705 550.168h217.808"/>
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="60.502"
+                                  d="M665.558 368.589h-38.117c-59.13 0-107.089 47.956-107.089 107.089v401.128"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/">
+                        <svg class="follow_icons" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 41 40" width="1em" height="1em">
+                            <path fill="currentColor" fill-rule="evenodd"
+                                  d="M12.993 5.75a6.742 6.742 0 0 0-6.743 6.743v15.014a6.742 6.742 0 0 0 6.743 6.743h15.014a6.742 6.742 0 0 0 6.743-6.742V12.493a6.742 6.742 0 0 0-6.742-6.743zm0-1.5h15.015c4.551 0 8.242 3.69 8.242 8.243v15.015c0 4.551-3.69 8.242-8.243 8.242H12.993a8.242 8.242 0 0 1-8.243-8.243V12.493a8.242 8.242 0 0 1 8.243-8.243zm15.75 6.189a1.313 1.313 0 1 0 1.319 1.317v-.004h-.75l.75.004a1.312 1.312 0 0 0-1.312-1.317h-.006zm-11.955 5.849a5.25 5.25 0 1 1 7.424 7.424 5.25 5.25 0 0 1-7.424-7.424m-1.061-1.061a6.75 6.75 0 1 1 9.546 9.546 6.75 6.75 0 0 1-9.546-9.546"
+                                  clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/">
+                        <svg class="follow_icons" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 41 40" width="1em" height="1em">
+                            <path fill="currentColor" fill-rule="evenodd"
+                                  d="M6.25 12.5A6.75 6.75 0 0 1 13 5.75h15.007a6.743 6.743 0 0 1 6.743 6.743v15.015a6.743 6.743 0 0 1-6.743 6.742H12.993a6.743 6.743 0 0 1-6.743-6.743zm21.757-8.25H13a8.25 8.25 0 0 0-8.25 8.25v15.007a8.243 8.243 0 0 0 8.243 8.243h15.014a8.243 8.243 0 0 0 8.243-8.242V12.493a8.243 8.243 0 0 0-8.243-8.243zm-10.462 10.1a.75.75 0 0 0-1.125.65v10a.75.75 0 0 0 1.125.65l8.66-5a.75.75 0 0 0 0-1.3zM24.33 20l-6.41 3.7v-7.4z"
+                                  clip-rule="evenodd"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = document.querySelector('.toggle_btn i')
+        const dropDownMenu = document.querySelector('.dropdown_menu')
+
+        toggleBtn.onclick = function () {
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+            toggleBtnIcon.classList = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars'
+        }
+    </script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>
