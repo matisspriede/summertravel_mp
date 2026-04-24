@@ -1,0 +1,730 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+body {
+  background-image: url("../images/backgroung.jpg");
+  background-attachment: fixed;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+}
+a:hover {
+  color: orange;
+}
+header {
+  position: relative;
+  padding: 0 2rem;
+  background-color: black;
+}
+.navbar {
+  width: 100%;
+  height: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+}
+.navbar .logo a {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.navbar .links {
+  display: flex;
+  gap: 2rem;
+}
+.navbar .toggle_btn {
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+}
+
+.action_btn {
+  background-color: orange;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: scale 0.2 ease;
+}
+.action_btn:hover {
+  scale: 1.05;
+  color: #fff;
+}
+.action_btn:active {
+  scale: 0.95;
+}
+
+/* DROPDOWN MENIU */
+.dropdown_menu {
+  display: none;
+  position: absolute;
+  right: 2rem;
+  top: 76px;
+  height: 0;
+  width: 300px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: height 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1;
+  font-weight: bold;
+}
+
+.dropdown_menu.open {
+  height: 320px;
+}
+
+.dropdown_menu li {
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dropdown_menu .action_btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Main */
+section.galvenais {
+  height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+}
+
+.galvenais h1 {
+  font-size: 5rem;
+}
+.galvenais p {
+  font-size: 1.5rem;
+}
+.hero_btns .action_btn {
+  font-size: 1.2rem;
+  padding: 0.8rem 2rem;
+}
+
+/* Footer */
+.apaksa {
+  background-color: #111;
+  color: #fff;
+  padding: 2.5rem 3rem;
+  margin-top: 3rem;
+}
+.virsraksts {
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 1rem;
+}
+.virsraksts h1 {
+  font-size: 1.4rem;
+  color: orange;
+  margin-bottom: 0.3rem;
+}
+.virsraksts p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+}
+.visi_cont {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.contacts {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding-top: 1rem;
+  gap: 0.4rem;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+}
+.contacts h2 {
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.follow {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.follow h2 {
+  font-size: 0.95rem;
+  color: #fff;
+  margin-bottom: 0.6rem;
+  margin-top:1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.icons_div {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  margin-top: 0.3rem;
+}
+.follow_icons {
+  height: 32px;
+  width: 32px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.follow_icons:hover {
+  opacity: 1;
+}
+/* AFRICA */
+
+.a_main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding-top: 2rem;
+}
+
+.africa_img_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: chocolate;
+  padding: 8px;
+  border-radius: 14px;
+  z-index: -1;
+  font-size: 1.05rem;
+}
+
+.top_img {
+  display: flex;
+  border-radius: 20px;
+  position: relative;
+  justify-content: center;
+  max-width: 1200px;
+}
+
+.africa_img {
+  border-radius: 20px;
+  width: 70%;
+  height: 50%;
+  object-fit: scale-down;
+  z-index: -2;
+  box-shadow: 0 0 10px 10px rgba(255, 134, 58, 0.5);
+}
+
+.uzraksts {
+  padding: 4rem;
+  color: #fff;
+  text-align: center;
+}
+.mini_uzraksts {
+  color: #fff;
+  max-width: 1200px;
+  padding-left: 100px;
+  padding-right: 100px;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+/* Americas */
+.americas_img_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: rgb(124, 143, 31);
+  padding: 8px;
+  border-radius: 14px;
+  z-index: -1;
+  font-size: 1.05rem;
+}
+.americas_img {
+  border-radius: 20px;
+  width: 70%;
+  height: 50%;
+  object-fit: scale-down;
+  z-index: -2;
+  box-shadow: 0 0 10px 10px rgba(222, 255, 58, 0.5);
+}
+/* ASIA */
+.asia_img_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: rgb(255, 106, 0);
+  padding: 8px;
+  border-radius: 14px;
+  z-index: -1;
+  font-size: 1.05rem;
+}
+.asia_img {
+  border-radius: 20px;
+  width: 70%;
+  height: 50%;
+  object-fit: scale-down;
+  z-index: -2;
+  box-shadow: 0 0 10px 10px rgba(255, 106, 0, 0.5);
+}
+/* EUROPE */
+.europe_img_text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: rgb(0, 208, 255);
+  padding: 8px;
+  border-radius: 14px;
+  z-index: -1;
+  font-size: 1.05rem;
+}
+.europe_img {
+  border-radius: 20px;
+  width: 70%;
+  height: 50%;
+  object-fit: scale-down;
+  z-index: -2;
+  box-shadow: 0 0 10px 10px rgba(0, 208, 255, 0.5);
+}
+
+/* BLOKI */
+
+.a_blocks {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 100px;
+  padding-right: 100px;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Līnijas jeb viss contents kas ir vienā blokā */
+.a_line {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  height: auto;
+}
+
+.a_line2 {
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  height: auto;
+}
+
+#rem_top {
+  margin-top: 3rem;
+}
+
+/* Attēls Blakus tekstam blokos */
+.attels {
+  width: 400px;
+  height: 230px;
+}
+.maroka {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+/* Viss baltais kur iekšā ir teksts */
+.texts_pie_img {
+  background-color: #fff;
+  width: 400px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Teksti blokos kas ir balkus */
+/* text_right ir teksts pa kreisi, kur ir nosaukumi */
+.text_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+/* text_left ir teksts pa labi, kur ir cipari */
+.text_left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+.cena {
+  background-color: black;
+  color: #fff;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.vietas {
+  padding-left: 4px;
+  line-height: 1.5;
+  list-style-image: url("where_to_vote_FILL0_wght400_GRAD0_opsz24.svg");
+}
+.vietas-ul {
+  padding-left: 25px;
+  margin-top: 10px;
+}
+
+/* LOGIN */
+
+.getstarted_main {
+  height: calc(100dvh - 60px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3rem 0rem;
+}
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  width: 25rem;
+  height: 30rem;
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+  margin: 0 15px;
+}
+
+.login_title {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+h5 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: black;
+}
+.login_title p {
+  padding: 20px 0 15px 0;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  color: rgb(120, 120, 120);
+  font-weight: 500;
+}
+
+.email {
+  width: 90%;
+  border: solid 1.5px black;
+  border-radius: 5px;
+  background: none;
+  padding: 1rem;
+  font-size: 1rem;
+  color: black;
+  margin: 1rem;
+}
+.label {
+  position: absolute;
+  top: 1rem;
+  left: 35px;
+  color: black;
+  font-weight: 500;
+  font-size: 18px;
+}
+.login_btn {
+  background-color: orange;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: scale 0.2 ease;
+  width: 90%;
+  margin-top: 1rem;
+}
+.login_btn:hover {
+  scale: 1.05;
+  color: #fff;
+}
+
+.foto_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem;
+}
+.foto_main > h1 {
+  color: #fff;
+  background-color: black;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.gallery_section {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 2rem;
+  margin-bottom: 2.5rem;
+}
+.gallery_continent_title {
+  color: #fff;
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid orange;
+  display: inline-block;
+}
+.gallery_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+.gallery_card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+}
+.gallery_card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+.gallery_card:hover img {
+  transform: scale(1.05);
+}
+.gallery_label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  text-align: center;
+  padding: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* MEDIA DESIGN */
+
+@media (max-width: 1150px) {
+  .a_line,
+  .a_line2 {
+    justify-content: center;
+  }
+  .text_right {
+    font-size: 0.8rem;
+  }
+  .text_left {
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar .links,
+  .navbar .action_btn {
+    display: none;
+  }
+
+  .navbar .toggle_btn {
+    display: block;
+  }
+
+  .dropdown_menu {
+    display: block;
+  }
+
+  /* AFRICA */
+  .a_line,
+  .a_line2 {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .texts_pie_img,
+  .maroka {
+    width: 100%;
+    border-radius: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .dropdown_menu {
+    left: 2rem;
+    width: unset;
+  }
+  .maroka,
+  .attels {
+    display: none;
+  }
+  .visi_cont {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .contacts {
+    border-bottom: solid 2px;
+    width: 100%;
+    padding-bottom: 5px;
+  }
+  .follow {
+    width: 100%;
+  }
+  .icons_div {
+    gap: 1rem;
+  }
+  .getstarted_main {
+    width: 100%;
+  }
+  .gallery_grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 475px) {
+  .texts_pie_img {
+    flex-wrap: wrap;
+  }
+  .text_left {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 0;
+  }
+
+  .a_blocks,
+  .mini_uzraksts {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .top_img {
+    height: 140px;
+  }
+  .africa_img,
+  .americas_img,
+  .asia_img,
+  .europe_img {
+    width: 85%;
+    height: 140px;
+    object-fit: cover;
+  }
+  .extra_text {
+    display: none;
+  }
+  .vietas-ul {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 700px) {
+  .tours_table thead { display: none; }
+
+  .tours_table, .tours_table tbody, .tours_table tr, .tours_table td {
+    display: block;
+    width: 100%;
+  }
+
+  .tours_table tr {
+    background: rgba(0,0,0,0.6);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .tours_table td {
+    padding: 0.3rem 0;
+    border: none;
+    font-size: 0.9rem;
+  }
+
+  .tours_table td:nth-child(3) {
+    font-size: 1rem;
+    font-weight: bold;
+    color: orange;
+  }
+
+  .tours_table td:nth-child(1),
+  .tours_table td:nth-child(2) {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.8rem;
+  }
+
+  .action_cell {
+    margin-top: 0rem;
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+  }
+}
+
+/* ── Hero buttons ── */
+.hero_btns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Tours list page ── */
