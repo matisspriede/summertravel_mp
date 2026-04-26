@@ -19,10 +19,10 @@
         <div class="navbar">
             <div class="logo"><a href="{{ url_for('index') }}">SummerTravel</a></div>
             <ul class="links">
-                <li><a href="#">Africa</a></li>
-                <li><a href="#">Americas</a></li>
-                <li><a href="#">Asia</a></li>
-                <li><a href="#">Europe</a></li>
+                <li><a href="{{ url_for('continent', continent_id=1) }}">Africa</a></li>
+                <li><a href="{{ url_for('continent', continent_id=2) }}">Americas</a></li>
+                <li><a href="{{ url_for('continent', continent_id=3) }}">Asia</a></li>
+                <li><a href="{{ url_for('continent', continent_id=4) }}">Europe</a></li>
             </ul>
             <a href="{{ url_for('login') }}" class="action_btn">Login</a>
             <div class="toggle_btn">
@@ -31,10 +31,10 @@
         </div>
 
         <div class="dropdown_menu">
-            <li><a href="#">Africa</a></li>
-            <li><a href="#">Americas</a></li>
-            <li><a href="#">Asia</a></li>
-            <li><a href="#">Europe</a></li>
+            <li><a href="{{ url_for('continent', continent_id=1) }}">Africa</a></li>
+            <li><a href="{{ url_for('continent', continent_id=2) }}">Americas</a></li>
+            <li><a href="{{ url_for('continent', continent_id=3) }}">Asia</a></li>
+            <li><a href="{{ url_for('continent', continent_id=4) }}">Europe</a></li>
             <li><a href="{{ url_for('login') }}" class="action_btn">Login</a></li>
         </div>
     </header>

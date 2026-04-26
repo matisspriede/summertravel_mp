@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}{{ continent['name'] }} – SummerTravel{% endblock %}
+
+{% block content %}
+<main class="a_main">
+
+    <div class="top_img">
+        <h2 class="africa_img_text" style="background-color: orange;">
+            {{ continent['name'] }} Vacation Packages &amp; Tours
+        </h2>
+        <img class="{{ continent['name']|lower }}_img"
+             src="{{ url_for('static', filename='images/backgroung.jpg') }}"
+             alt="{{ continent['name'] }}">
+    </div>
+
+    <div class="uzraksts">
+        <h1>Vacations to {{ continent['name'] }}</h1>
+    </div>
+
+    <div class="mini_uzraksts">
+        <p>{{ continent['description'] }}</p>
+    </div>
+
+    <div class="uzraksts">
+        <h2>Our recommendations to visit in {{ continent['name'] }}</h2>
+    </div>
+
+    <div class="a_blocks">
+        {% for item in dest_data %}
+        {% set dest = item['dest'] %}
+        {% for item2 in item['tours'] %}
+        {% set tour = item2['tour'] %}
+        {% set stops = item2['stops'] %}
+        <div class="a_line">
+            <div class="attels">
+                <img class="maroka"
+                     src="{{ url_for('static', filename='images/' ~ dest['image']) }}"
+                     alt="{{ dest['name'] }}">
+            </div>
+            <div class="texts_pie_img">
+                <div class="text_right">
+                    <h1>{{ dest['name'] }}</h1>
+                    <h2>{{ tour['title'] }}</h2>
+                    <ul class="vietas-ul">
+                        {% for stop in stops %}
+                        <li class="vietas">{{ stop['stop_name'] }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="text_left">
+                    <h2 class="cena">${{ tour['price'] }}</h2>
+                    <h2 class="cena">
+                        <a target="_blank" href="{{ tour['external_url'] }}">See More</a>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+</main>
+{% endblock %}
