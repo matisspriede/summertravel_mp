@@ -27,12 +27,16 @@
     </div>
 
     <div class="a_blocks">
+        {% set counter = namespace(val=0) %}
         {% for item in dest_data %}
         {% set dest = item['dest'] %}
+
         {% for item2 in item['tours'] %}
         {% set tour = item2['tour'] %}
         {% set stops = item2['stops'] %}
-        <div class="a_line">
+
+        {% set counter.val = counter.val + 1 %}
+        <div id="rem_top" class="{{ 'a_line' if counter.val is odd else 'a_line2' }}">
             <div class="attels">
                 <img class="maroka"
                      src="{{ url_for('static', filename='images/' ~ dest['image']) }}"
@@ -56,6 +60,7 @@
                 </div>
             </div>
         </div>
+
         {% endfor %}
         {% endfor %}
     </div>

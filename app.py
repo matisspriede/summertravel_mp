@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request
+from flask import Flask, render_template, redirect, url_for, request, abort
 import sqlite3
 import os
 
@@ -25,7 +25,7 @@ def continent(continent_id):
     db = get_db()
     cont = db.execute('SELECT * FROM continents WHERE id = ?', (continent_id,)).fetchone()
     if not cont:
-        return "Not found", 404
+        abort(404)
 
     destinations = db.execute(
         'SELECT * FROM destinations WHERE continent_id = ?', (continent_id,)
@@ -34,7 +34,7 @@ def continent(continent_id):
     dest_data = []
     for dest in destinations:
         tours = db.execute(
-            'SELECT * FROM tours WHERE destination_id = ?', (dest['id'],)
+            'SELECT * FROM tours WHERE destination_id = ? AND continent_id IS NULL', (dest['id'],)
         ).fetchall()
         tours_with_stops = []
         for tour in tours:
@@ -46,6 +46,11 @@ def continent(continent_id):
 
     db.close()
     return render_template('continent.html', continent=cont, dest_data=dest_data)
+
+
+@app.route('/gallery')
+def gallery():
+    return render_template('gallery.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
