@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}{{ 'Edit' if tour else 'Add' }} Tour – SummerTravel{% endblock %}
+
+{% block content %}
+<div class="form_page">
+    <h1>{{ 'Edit' if tour else 'Add New' }} Tour</h1>
+
+    <form method="POST" class="crud_form">
+
+       <label for="continent_id">Continent</label>
+        <select name="continent_id" id="continent_id" required>
+            {% for c in continents %}
+            <option value="{{ c['id'] }}"
+                {% if tour and tour['continent_id'] == c['id'] %}selected{% endif %}>
+                {{ c['name'] }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country"
+               value="{{ tour['country'] if tour else '' }}"
+               placeholder="e.g. Thailand">
+
+        <label for="title">Tour Name</label>
+        <input type="text" id="title" name="title"
+               value="{{ tour['title'] if tour else '' }}"
+               placeholder="e.g. Grand Tour of Morocco" required>
+
+        <label for="price">Price (USD)</label>
+        <input type="number" id="price" name="price"
+               value="{{ tour['price'] if tour else '' }}"
+               placeholder="e.g. 1699" min="0" required>
+
+        <label for="external_url">External URL</label>
+        <input type="url" id="external_url" name="external_url"
+               value="{{ tour['external_url'] if tour else '' }}"
+               placeholder="https://...">
+               
+        <label for="image">Image filename (e.g. japan.jpg)</label>
+        <input type="text" id="image" name="image"
+               value="{{ tour['image'] if tour else '' }}"
+               placeholder="e.g. japan.jpg">
+
+        <label for="stops">Stops (comma-separated)</label>
+        <input type="text" id="stops" name="stops"
+               value="{{ stops_str if stops_str is defined else '' }}"
+               placeholder="e.g. Cairo, Giza, Luxor">
+
+        <div class="form_actions">
+            <button type="submit" class="login_btn">{{ 'Save Changes' if tour else 'Add Tour' }}</button>
+            <a href="{{ url_for('tours') }}" class="cancel_btn">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

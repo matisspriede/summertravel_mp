@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}Manage Tours – SummerTravel{%
+endblock %} {% block content %}
+<div class="tours_page">
+    <div class="tours_header">
+        <h1>All Tours</h1>
+        <a href="{{ url_for('tour_add') }}" class="action_btn">+ Add Tour</a>
+    </div>
+
+    <div class="tours_table_wrap">
+        <table class="tours_table">
+            <thead>
+                <tr>
+                    <th>Destination</th>
+                    <th>Continent</th>
+                    <th>Tour Name</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in tours %}
+                <tr>
+                    <td>{{ t['country'] or t['destination'] }}</td>
+                    <td>{{ t['continent'] }}</td>
+                    <td>{{ t['title'] }}</td>
+                    <td>${{ t['price'] }}</td>
+                    <td class="action_cell">
+                        <a href="{{ url_for('tour_edit', tour_id=t['id']) }}" class="edit_btn">Edit</a>
+                        <form method="POST" action="{{ url_for('tour_delete', tour_id=t['id']) }}"
+                            onsubmit="return confirm('Delete this tour?');" style="display: inline; margin-left: 0.6rem">
+                            <button type="submit" class="delete_btn">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
