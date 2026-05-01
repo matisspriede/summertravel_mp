@@ -1,8 +1,19 @@
 {% extends "base.html" %}
 {% block title %}Gallery – SummerTravel{% endblock %}
 {% block content %}
-<div style="padding: 2rem; color: white; text-align: center;">
-    <h1>Gallery</h1>
-    <p>Coming soon...</p>
+<div class="gallery_page">
+    {% for continent_name, destinations in all_destinations.items() %}
+    <div class="gallery_section">
+        <h2>{{ continent_name }}</h2>
+        <div class="gallery_grid">
+            {% for dest in destinations %}
+            <div class="gallery_item">
+                <img src="{{ url_for('static', filename='images/' ~ dest['image']) }}" alt="{{ dest['name'] }}">
+                <p>{{ dest['name'] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}

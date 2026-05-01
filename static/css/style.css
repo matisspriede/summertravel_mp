@@ -728,3 +728,123 @@ h5 {
 }
 
 /* ── Tours list page ── */
+
+.tours_page {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  color: #fff;
+}
+.tours_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+.tours_header h1 { font-size: 2rem; }
+.tours_table_wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.tours_table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  background: rgba(0,0,0,0.6);
+  border-radius: 12px;
+  overflow: hidden;
+  border: none;
+}
+.tours_table th {
+  background: rgba(0,0,0,0.85);
+  padding: 1rem 1.2rem;
+  text-align: left;
+  font-size: 0.95rem;
+  border: none;
+  border-bottom: 2px solid rgba(255,165,0,0.4);
+}
+.tours_table td {
+  padding: 0.85rem 1.2rem;
+  border: none;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  height: auto;
+  font-size: 0.9rem;
+}
+.tours_table tr:last-child td { border-bottom: none; }
+.tours_table tr:hover td { background: rgba(255,165,0,0.07); }
+.action_cell {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+.edit_btn {
+  background: orange;
+  color: #fff;
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+.edit_btn:hover { opacity: 0.85; color: #fff; }
+.delete_btn {
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  padding: 0.35rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.delete_btn:hover { opacity: 0.85; }
+
+/* ── CRUD form page ── */
+.form_page {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  color: #fff;
+}
+.form_page h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+.crud_form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.crud_form label {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: rgba(255,255,255,0.7);
+  margin-top: 0.7rem;
+}
+.crud_form input,
+.crud_form select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 0.95rem;
+  font-family: "Outfit", sans-serif;
+}
+.crud_form select option { background: #222; color: #fff; }
+.crud_form input::placeholder { color: rgba(255,255,255,0.35); }
+.form_actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-top: 1.2rem;
+}
+.crud_form .login_btn { font-size: 1rem; width: auto; margin: 0; }
+.cancel_btn {
+  color: rgba(255,255,255,0.6);
+  font-size: 0.9rem;
+  text-decoration: underline;
+}
+.cancel_btn:hover { color: #fff; }

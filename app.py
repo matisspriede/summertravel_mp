@@ -53,7 +53,16 @@ def continent(continent_id):
 
 @app.route('/gallery')
 def gallery():
-    return render_template('gallery.html')
+    db = get_db()
+    continents = db.execute('SELECT * FROM continents').fetchall()
+    all_destinations = {}
+    for c in continents:
+        dests = db.execute(
+            'SELECT * FROM destinations WHERE continent_id = ?', (c['id'],)
+        ).fetchall()
+        all_destinations[c['name']] = dests
+    db.close()
+    return render_template('gallery.html', all_destinations=all_destinations)
 
 
 @app.route('/login', methods=['GET', 'POST'])
