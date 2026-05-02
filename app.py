@@ -48,6 +48,19 @@ def continent(continent_id):
             tours_with_stops.append({'tour': tour, 'stops': stops})
         dest_data.append({'dest': dest, 'tours': tours_with_stops})
 
+    # Also fetch custom tours added via the form
+    custom_tours = db.execute(
+        'SELECT * FROM tours WHERE continent_id = ?', (continent_id,)
+    ).fetchall()
+    for tour in custom_tours:
+        stops = db.execute(
+            'SELECT stop_name FROM tour_stops WHERE tour_id = ?', (tour['id'],)
+        ).fetchall()
+        dest_data.append({
+            'dest': {'name': tour['country'], 'image': tour['image'] or 'backgroung.jpg'},
+            'tours': [{'tour': tour, 'stops': stops}]
+        })
+
     db.close()
     return render_template('continent.html', continent=cont, dest_data=dest_data)
 
@@ -68,6 +81,7 @@ def gallery():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
+        # Placeholder — just redirect back home for now
         return redirect(url_for('index'))
     return render_template('login.html')
 
