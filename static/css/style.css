@@ -81,7 +81,7 @@ header {
   scale: 0.95;
 }
 
-/* DROPDOWN MENIU */
+/* DROPDOWN MENU */
 .dropdown_menu {
   display: none;
   position: absolute;
@@ -728,7 +728,6 @@ h5 {
 }
 
 /* ── Tours list page ── */
-
 .tours_page {
   max-width: 1100px;
   margin: 3rem auto;

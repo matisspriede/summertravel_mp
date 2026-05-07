@@ -1,15 +1,21 @@
 {% extends "base.html" %}
-{% block title %}Gallery – SummerTravel{% endblock %}
+
+{% block title %}Photo Gallery – SummerTravel{% endblock %}
+
 {% block content %}
-<div class="gallery_page">
-    {% for continent_name, destinations in all_destinations.items() %}
+
+<!-- Izveido foto galeriju, kas sadala galamērķus pa kontinentiem un katram galamērķim parāda attēlu ar nosaukumu -->
+<div class="foto_main">
+    <h1>Photo Gallery</h1>
+    {% for continent_name, dests in all_destinations.items() %}
     <div class="gallery_section">
-        <h2>{{ continent_name }}</h2>
+        <h2 class="gallery_continent_title">{{ continent_name }}</h2>
         <div class="gallery_grid">
-            {% for dest in destinations %}
-            <div class="gallery_item">
-                <img src="{{ url_for('static', filename='images/' ~ dest['image']) }}" alt="{{ dest['name'] }}">
-                <p>{{ dest['name'] }}</p>
+            {% for dest in dests %}
+            <div class="gallery_card">
+                <img src="{{ url_for('static', filename='images/' ~ dest['image']) }}"
+                     alt="{{ dest['name'] }}">
+                <span class="gallery_label">{{ dest['name'] }}</span>
             </div>
             {% endfor %}
         </div>

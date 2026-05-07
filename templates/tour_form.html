@@ -4,10 +4,12 @@
 
 {% block content %}
 <div class="form_page">
+       <!-- Parāda ekskursijas pievienošanas vai rediģēšanas formu, mainot virsrakstu atkarībā no tā, vai tiek rediģēts esošs ieraksts vai pievienots jauns -->
     <h1>{{ 'Edit' if tour else 'Add New' }} Tour</h1>
 
     <form method="POST" class="crud_form">
 
+       <!-- Izveido kontinenta izvēles sarakstu formā un, ja tiek rediģēts ekskursijas ieraksts, automātiski atzīmē jau esošo izvēlēto kontinentu -->
        <label for="continent_id">Continent</label>
         <select name="continent_id" id="continent_id" required>
             {% for c in continents %}

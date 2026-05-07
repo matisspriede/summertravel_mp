@@ -5,6 +5,7 @@
 {% block content %}
 <main class="a_main">
 
+    <!-- Attēlo kontinenta virsrakstu un fona attēlu, izmantojot dinamisku kontinenta nosaukumu un noklusēto attēlu -->
     <div class="top_img">
         <h2 class="africa_img_text" style="background-color: orange;">
             {{ continent['name'] }} Vacation Packages &amp; Tours
@@ -26,6 +27,7 @@
         <h2>Our recommendations to visit in {{ continent['name'] }}</h2>
     </div>
 
+<!-- Izvada galamērķus ar to ekskursijām un pieturvietām, katru ierakstu stilizējot pārmaiņus, un parāda attēlu, nosaukumu, ekskursijas detaļas, pieturvietu sarakstu, cenu un ārējo saiti -->
     <div class="a_blocks">
         {% set counter = namespace(val=0) %}
         {% for item in dest_data %}

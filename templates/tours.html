@@ -19,6 +19,8 @@ endblock %} {% block content %}
             </thead>
             <tbody>
                 {% for t in tours %}
+
+                <!-- Izvada vienu ekskursiju tabulas rindu ar valsti/galamērķi, kontinentu, nosaukumu un cenu, kā arī pievieno pogas ekskursijas rediģēšanai un dzēšanai -->
                 <tr>
                     <td>{{ t['country'] or t['destination'] }}</td>
                     <td>{{ t['continent'] }}</td>

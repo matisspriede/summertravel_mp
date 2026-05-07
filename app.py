@@ -3,19 +3,20 @@ import sqlite3
 import os
 
 app = Flask(__name__)
-DB = os.path.join(os.path.dirname(__file__), 'database.db')
+DB = os.path.join(os.path.dirname(__file__), 'database.db') # Izveido pilnu ceļu uz database.db failu
 
 
 # ── DB helper ────────────────────────────────────────────────────────────────
 
+# Izveido un atgriež savienojumu ar SQLite datubāzi, lai datus varētu iegūt pēc kolonnu nosaukumiem
 def get_db():
     conn = sqlite3.connect(DB)
     conn.row_factory = sqlite3.Row
     return conn
 
-
 # ── Routes ───────────────────────────────────────────────────────────────────
 
+# Iegūst visus kontinentus no datubāzes un parāda tos sākumlapā (index.html)
 @app.route('/')
 def index():
     db = get_db()
@@ -23,7 +24,7 @@ def index():
     db.close()
     return render_template('index.html', continents=continents)
 
-
+# Iegūst konkrētu kontinentu pēc ID un pārtrauc ar 404 kļūdu, ja tas neeksistē
 @app.route('/continent/<int:continent_id>')
 def continent(continent_id):
     db = get_db()
@@ -31,10 +32,12 @@ def continent(continent_id):
     if not cont:
         abort(404)
 
+# Iegūst visus galamērķus, kas pieder konkrētajam kontinentam no datubāzes
     destinations = db.execute(
         'SELECT * FROM destinations WHERE continent_id = ?', (continent_id,)
     ).fetchall()
 
+# Izveido strukturētu sarakstu ar galamērķiem, tiem piesaistītajām ekskursijām un katras ekskursijas pieturvietām
     dest_data = []
     for dest in destinations:
         tours = db.execute(
@@ -48,7 +51,7 @@ def continent(continent_id):
             tours_with_stops.append({'tour': tour, 'stops': stops})
         dest_data.append({'dest': dest, 'tours': tours_with_stops})
 
-    # Also fetch custom tours added via the form
+# Iegūst lietotāja pievienotās ekskursijas un pievieno tās galamērķu datu sarakstam kopā ar to pieturvietām un attēlu
     custom_tours = db.execute(
         'SELECT * FROM tours WHERE continent_id = ?', (continent_id,)
     ).fetchall()
@@ -61,9 +64,11 @@ def continent(continent_id):
             'tours': [{'tour': tour, 'stops': stops}]
         })
 
+# Aizver datubāzes savienojumu un attēlo kontinenta lapu ar sagatavotajiem datiem
     db.close()
     return render_template('continent.html', continent=cont, dest_data=dest_data)
 
+# Iegūst visus kontinentus un to galamērķus no datubāzes, sakārto tos pa kontinentu nosaukumiem un parāda galerijas lapā
 @app.route('/gallery')
 def gallery():
     db = get_db()
@@ -77,7 +82,7 @@ def gallery():
     db.close()
     return render_template('gallery.html', all_destinations=all_destinations)
 
-
+# Apstrādā lietotāja ielogošanās lapu; POST gadījumā pāradresē uz sākumlapu, bet GET gadījumā parāda login formu
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -88,6 +93,7 @@ def login():
 
 # ── CRUD: Tours ──────────────────────────────────────────────────────────────
 
+# Iegūst visu ekskursiju sarakstu no datubāzes, apvienojot datus ar galamērķiem un kontinentiem, un parāda tos tours lapā
 @app.route('/tours')
 def tours():
     db = get_db()
@@ -104,7 +110,7 @@ def tours():
     db.close()
     return render_template('tours.html', tours=rows)
 
-
+# Apstrādā jaunas ekskursijas pievienošanu: POST gadījumā saglabā ekskursijas un tās pieturvietas datubāzē, bet GET gadījumā parāda ekskursijas ievades formu ar kontinentu sarakstu
 @app.route('/tours/add', methods=['GET', 'POST'])
 def tour_add():
     db = get_db()
@@ -131,7 +137,7 @@ def tour_add():
     db.close()
     return render_template('tour_form.html', tour=None, continents=continents)
 
-
+# Apstrādā ekskursijas rediģēšanu: atrod ekskursiju pēc ID, atjaunina tās datus un pieturvietas vai parāda rediģēšanas formu ar esošajiem datiem
 @app.route('/tours/<int:tour_id>/edit', methods=['GET', 'POST'])
 def tour_edit(tour_id):
     db = get_db()
@@ -164,6 +170,7 @@ def tour_edit(tour_id):
     db.close()
     return render_template('tour_form.html', tour=tour, stops_str=stops_str, continents=continents)
 
+# Izdzēš ekskursiju un tai piesaistītās pieturvietas no datubāzes un atgriež lietotāju uz ekskursiju sarakstu
 @app.route('/tours/<int:tour_id>/delete', methods=['POST'])
 def tour_delete(tour_id):
     db = get_db()
@@ -174,7 +181,6 @@ def tour_delete(tour_id):
     return redirect(url_for('tours'))
 
 
-# ── Entry point ───────────────────────────────────────────────────────────────
-
+# Palaiž Flask lietotni lokāli ar ieslēgtu debug režīmu (izstrādes nolūkiem)
 if __name__ == '__main__':
     app.run(debug=True)
